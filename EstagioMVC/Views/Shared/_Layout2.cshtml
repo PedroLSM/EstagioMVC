@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstágioMVC</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Concert+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/Site2.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-mycolor">
+
+            @Html.ActionLink("EstágioMVC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cursos
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="~/Curso/Exibir">Exibir</a>
+                            <a class="dropdown-item" href="~/Curso/Adicionar">Adicionar</a>
+                            <a class="dropdown-item" href="~/Curso/Atualizar">Atualizar</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="~/Curso/Deletar">Remover</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Trainees
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="~/Trainee/Exibir">Exibir</a>
+                            <a class="dropdown-item" href="~/Trainee/Adicionar">Adicionar</a>
+                            <a class="dropdown-item" href="~/Trainee/Atualizar">Atualizar</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="~/Trainee/Deletar">Remover</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Historicos
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a  class="dropdown-item disabled isDisabled" href="~/Historico/Exibir">Exibir</a>
+                            <a  class="dropdown-item disabled isDisabled" href="~/Historico/Adicionar">Adicionar</a>
+                            <a  class="dropdown-item disabled isDisabled" href="~/Historico/Atualizar">Atualizar</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a  class="dropdown-item disabled isDisabled" href="~/Historico/Deletar">Remover</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+            @Html.Partial("_LoginPartial")
+        </nav>
+    </header>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET by Pedro</p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

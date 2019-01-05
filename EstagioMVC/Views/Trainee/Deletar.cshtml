@@ -1,0 +1,43 @@
+﻿@model EstagioMVC.ViewModel.ViewModelTrainee
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<section>
+
+    <br />
+    <h2 class="h2">Deletar Trainee</h2>
+    <hr />
+
+    <div class="form-inline">
+        @using (Html.BeginForm("Checar", "Trainee"))
+        {
+            @Html.LabelFor(c => c.IdTrainee, new { @class = "sr-only" })
+            @Html.DropDownListFor(c => c.IdTrainee, new SelectList(Model.Trainees, "Id", "Nome"), "Selecione o Trainee", new { @class = "form-control mb-2 mr-sm-2" })
+
+            <button type="submit" class="btn btn-info mb-2 mr-3 ml-2">Checar</button>
+        }
+
+        @using (Html.BeginForm("Deletar", "Trainee"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(c => c.IdTrainee, new { id = "IdTraineeClone" })
+
+            <button type="submit" class="btn btn-danger mb-2">Deletar</button>
+        }
+    </div>
+
+</section>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $("#IdTrainee").on('change', function (e) {
+            e.preventDefault();
+            var Id1 = parseInt(document.querySelector('#IdTrainee').value)
+            document.getElementById('IdTraineeClone').value = Id1;
+        });
+    </script>
+}

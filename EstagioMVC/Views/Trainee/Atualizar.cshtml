@@ -1,0 +1,26 @@
+﻿@model EstagioMVC.ViewModel.ViewModelTrainee
+
+
+@{
+    ViewBag.Title = "Atualizar";
+}
+
+<section>
+
+    <br />
+    <h2 class="h2">Atualizar Trainee</h2>
+    <hr />
+
+    @using (Html.BeginForm("EditarDados", "Trainee", FormMethod.Post, new { @class = "form-inline" }))
+    {
+        @Html.LabelFor(c => c.IdTrainee, new { @class = "sr-only" })
+        @Html.DropDownListFor(c => c.IdTrainee, new SelectList(Model.Trainees, "Id", "Nome"), "Selecione o Trainee", new { @class = "form-control", value = Model.Trainee })
+
+        <button type="submit" class="btn btn-success ml-3">Editar</button>
+    }
+
+</section>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

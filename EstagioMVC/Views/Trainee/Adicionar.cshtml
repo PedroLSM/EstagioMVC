@@ -1,0 +1,35 @@
+﻿@model EstagioMVC.ViewModel.ViewModelTrainee
+@{
+    ViewBag.Title = "Adicionar";
+}
+
+<section>
+
+    <br />
+    <h2 class="h2">Adicionar Trainee</h2>
+    <hr />
+
+    @using (@Html.BeginForm("Adicionar", "Trainee"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Nome)
+            @Html.TextBoxFor(c => c.Nome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Nome)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Instituicao)
+            @Html.TextBoxFor(c => c.Instituicao, new { @class = "form-control" })
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-2">Inserir</button>
+
+    }
+
+</section>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

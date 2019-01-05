@@ -1,0 +1,49 @@
+﻿@model List<EstagioMVC.Models.Trainee>
+
+@{
+    ViewBag.Title = "Exibir";
+}
+
+<section>
+    <br />
+    <h2 class="h2 text-center">Trainees Inseridos</h2>
+    <hr />
+    <div class="container body-content">
+        <table class="table table-dark table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" class="width-maior">Estágiario</th>
+                    <th scope="col" class="width-maior2">Instituição</th>
+                    <th scope="col" class="text-center"></th>
+                    <th scope="col" class="text-center"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@(i + 1)</th>
+                        <td>@Model[i].Nome</td>
+                        <td>@Model[i].Instituicao</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("Checar", new { id = Model[i].Id })">
+                                <img src="~/Imagens/Delete_Icon.png" width="25px" title="Excluir">
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="@Url.Action("EditarDados", new { id = Model[i].Id })">
+                                <img src="~/Imagens/Edit_Icon1.png" width="20px" title="Editar">
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a id="Add" class="btn btn-dark float-right" href="~/Trainee/Adicionar" role="button">Adicionar</a>
+
+        <br />
+    </div>
+</section>

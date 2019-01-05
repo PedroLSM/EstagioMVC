@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNet.Identity
+@using EstagioMVC.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="nav-item dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @{
+                        var userId = User.Identity.GetUserId();
+                        var UserLgd = new ApplicationDbContext().Users.FirstOrDefault(u => u.Id == userId);
+                    }
+
+                    @UserLgd.Nome
+                </button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @Html.ActionLink("Gerenciar", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item text-dark" })
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item text-dark" href="javascript:document.getElementById('logoutForm').submit()">Fazer logoff</a>
+                </div>
+            </li>
+
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registre-se", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class= "nav-link" })</li>
+        <li>@Html.ActionLink("Logon", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}

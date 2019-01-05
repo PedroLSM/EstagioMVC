@@ -1,0 +1,54 @@
+﻿@model EstagioMVC.ViewModel.ViewModelTrainee
+
+@{
+    ViewBag.Title = "Atualizar";
+}
+
+@Html.Partial("Atualizar")
+
+
+<section>
+
+    <div id="dados">
+        <hr />
+
+        @using (@Html.BeginForm("Atualizar", "Trainee"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(c => c.IdTrainee, new { value = Model.IdTrainee })
+
+            <div class="form-group">
+                @Html.LabelFor(c => c.Nome)
+                @Html.TextBoxFor(c => c.Nome, new { @class = "form-control", value = Model.Nome })
+                @Html.ValidationMessageFor(c => c.Nome)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(c => c.Instituicao)
+                @Html.TextBoxFor(c => c.Instituicao, new { @class = "form-control", value = Model.Instituicao })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+        }
+
+    </div>
+
+</section>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () {
+
+            $("#IdTrainee").change(function (e) {
+                e.preventDefault();
+                document.getElementById('dados').style.display = "none";
+            });
+
+        });
+
+    </script>
+
+}

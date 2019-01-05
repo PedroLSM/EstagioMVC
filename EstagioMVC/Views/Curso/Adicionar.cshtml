@@ -1,0 +1,49 @@
+﻿@model EstagioMVC.ViewModel.ViewModelCurso
+@{
+    ViewBag.Title = "Adicionar";
+}
+
+<section>
+
+    <br />
+    <h2 class="h2">Adicionar Curso</h2>
+    <hr />
+
+    @using (@Html.BeginForm("Adicionar", "Curso"))
+    {
+        @Html.AntiForgeryToken()
+        <p class="alert alert-danger">Preencha <strong>todos os campos!</strong></p>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Avaliacao)
+            @Html.DropDownListFor(c => c.Avaliacao, new SelectList(new EstagioMVC.ViewModel.ViewModelCurso().Notas), "Avaliação do Curso", new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Avaliacao)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Nome)
+            @Html.TextBoxFor(c => c.Nome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Nome)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Autor)
+            @Html.TextBoxFor(c => c.Autor, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Autor)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Carga)
+            @Html.TextBoxFor(c => c.Carga, new { @class = "form-control", placeholder = "Insira a duração em minutos." })
+            @Html.ValidationMessageFor(c => c.Carga)
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Inserir</button>
+
+    }
+
+</section>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

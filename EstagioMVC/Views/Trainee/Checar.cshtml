@@ -1,0 +1,36 @@
+﻿@model EstagioMVC.ViewModel.ViewModelTrainee
+
+@{
+    ViewBag.Title = "Checar";
+}
+
+@Html.Partial("Deletar")
+
+<div id="dados">
+    <hr />
+
+    <fieldset disabled="disabled">
+        <div class="form-group">
+            @Html.LabelFor(c => c.Nome)
+            @Html.TextBoxFor(c => c.Nome, new { @class = "form-control", value = Model.Nome })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Instituicao)
+            @Html.TextBoxFor(c => c.Instituicao, new { @class = "form-control", value = Model.Instituicao })
+        </div>
+    </fieldset>
+
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $("#IdTrainee").on('change', function (e) {
+            e.preventDefault();
+            document.getElementById('dados').style.display = "none";
+        });
+    </script>
+}
